@@ -1,0 +1,24 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "一个优质的前端技术文档集合",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev mydocs",
+    "build": "vuepress build mydocs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strugglexiang/docs.git"
+  },
+  "keywords": [],
+  "author": "strugglexiang and heytoo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/strugglexiang/docs/issues"
+  },
+  "homepage": "https://github.com/strugglexiang/docs#readme",
+  "devDependencies": {
+    "vuepress": "^0.14.9"
+  }
+}
