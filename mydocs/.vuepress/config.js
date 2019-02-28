@@ -8,6 +8,7 @@ module.exports = {
     ],
     themeConfig: {
         displayAllHeaders: true,//显示所有页面的标题链接
+        lastUpdated: '上次更新时间', // string | boolean
         nav: [
             { text: '首页', link: '/'},
             { 
@@ -25,7 +26,14 @@ module.exports = {
                 '',
                 '教程',
             ],
-            '/vue/':[],
+            '/vue/':[
+                '',
+                '课程安排',
+                '构建项目',
+                '项目结构',
+                '组件',
+                '参考链接',
+            ],
         },
     },
     markdown: {
