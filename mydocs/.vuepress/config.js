@@ -23,16 +23,28 @@ module.exports = {
         sidebarDepth: 3,
         sidebar: {
             '/markdown/':[
-                '',
-                '教程',
+                {
+                    title: '学习Markdown',
+                    collapsable: false, 
+                    children: [
+                        '',
+                        '教程',
+                    ],
+                },
             ],
             '/vue/':[
-                '',
-                '课程安排',
-                '构建项目',
-                '项目结构',
-                '组件',
-                '参考链接',
+                {
+                    title: 'vue从入门到大型项目',
+                    collapsable: false, 
+                    children: [
+                        '',
+                        '课程安排',
+                        '构建项目',
+                        '项目结构',
+                        '组件',
+                        '参考链接'
+                    ],
+                },                
             ],
         },
     },
