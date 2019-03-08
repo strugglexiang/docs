@@ -15,7 +15,7 @@ module.exports = {
                 text: '教程', 
                 items: [
                     { text: '学习Markdown', link: '/markdown/'},
-                    { text: 'vue从入门到大型项目', link: '/vue/'},
+                    { text: 'vue指南', link: '/vue/'},
                 ]                
             },
             // { text: 'Github', link: 'https://github.com/strugglexiang/docs.git' },
@@ -34,14 +34,10 @@ module.exports = {
             ],
             '/vue/':[
                 {
-                    title: 'vue从入门到大型项目',
+                    title: 'vue指南',
                     collapsable: false, 
                     children: [
                         '',
-                        '课程安排',
-                        '构建项目',
-                        '项目结构',
-                        '参考链接'
                     ],
                 },    
                 {
