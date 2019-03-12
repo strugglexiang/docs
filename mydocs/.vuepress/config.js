@@ -16,6 +16,7 @@ module.exports = {
                 items: [
                     { text: '学习Markdown', link: '/markdown/'},
                     { text: 'vue指南', link: '/vue/'},
+                    { text: 'Redux的自我实现', link: '/redux/'},
                 ]                
             },
             // { text: 'Github', link: 'https://github.com/strugglexiang/docs.git' },
@@ -54,6 +55,9 @@ module.exports = {
                    ] 
                 }            
             ],
+            '/redux/':[
+                ''
+            ]
         },
     },
     markdown: {
