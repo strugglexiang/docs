@@ -53,6 +53,7 @@ module.exports = {
                        '组件/递归组件',
                        '组件/动态组件',
                        '组件/构造器和手动挂载',
+                       '组件/v-model语法糖',
                        '组件/render与functional'
                    ] 
                 }            
