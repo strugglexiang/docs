@@ -7,7 +7,7 @@
 ```
 git clone https://github.com/strugglexiang/docs.git
 cd docs
-cnpm i 或者 npm i
+npm i
 ```
 
 开发环境
