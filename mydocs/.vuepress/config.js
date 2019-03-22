@@ -17,6 +17,7 @@ module.exports = {
                     { text: '学习Markdown', link: '/markdown/'},
                     { text: 'vue指南', link: '/vue/'},
                     { text: 'Redux的自我实现', link: '/redux/'},
+                    { text: '设计模式', link:'/designPattern/'}
                 ]                
             },
             // { text: 'Github', link: 'https://github.com/strugglexiang/docs.git' },
@@ -60,6 +61,36 @@ module.exports = {
             ],
             '/redux/':[
                 ''
+            ],
+            '/designPattern/':[
+                {
+                    title: '设计模式',
+                    collapsable: false, 
+                    children: [
+                        '',
+                    ],
+                },
+                {
+                    title: '创建型设计模式',
+                    collapsable: false, 
+                    children: [
+                        '创建型/简单工厂模式'
+                    ]
+                },    
+                {
+                    title: '结构型设计模式',
+                    collapsable: false, 
+                    children: [
+                        '结构型/外观模式'
+                    ]
+                },          
+                {
+                    title: '行为型设计模式',
+                    collapsable: false, 
+                    children: [
+                        '行为型/模板方法模式'
+                    ]
+                },     
             ]
         },
     },
