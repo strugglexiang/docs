@@ -74,21 +74,22 @@ module.exports = {
                     title: '创建型设计模式',
                     collapsable: false, 
                     children: [
-                        '创建型/简单工厂模式'
+                        ['创建型/简单工厂模式', '简单工厂模式']
                     ]
                 },    
                 {
                     title: '结构型设计模式',
                     collapsable: false, 
                     children: [
-                        '结构型/外观模式'
+                        ['结构型/外观模式', '外观模式']
                     ]
                 },          
                 {
                     title: '行为型设计模式',
                     collapsable: false, 
                     children: [
-                        '行为型/模板方法模式'
+                        ['行为型/模板方法模式', '模板方法模式'],
+                        ['行为型/观察者模式', '观察者模式'],
                     ]
                 },     
             ]

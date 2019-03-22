@@ -10,9 +10,8 @@ const proObserver = () => {
         }
     }
     //-------- 发布
-    function publish(eventName, ...args) {
+    const publish = function (eventName, ...args) {
         msg[eventName].map(handler => {
-            console.log(this)
             handler.call(this, ...args)
         })
     }
@@ -33,15 +32,18 @@ const proObserver = () => {
 //-------------- 使用
 const observer1 = proObserver()
 
-const handler1 = () => {
+const handler1 = function() {
     console.log('handler1接收到消息')
+    console.log(this, arguments)
 }
-const handler2 = () => {
+const handler2 = function() {
     console.log('handler2接收到消息')
+    console.log(this, arguments)
 }
 
-const handler3 = () => {
+const handler3 = function(){
     console.log('handler3接收到消息')
+    console.log(this, arguments)
 }
 
 observer1.register('test', handler1)

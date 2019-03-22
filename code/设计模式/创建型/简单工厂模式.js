@@ -1,19 +1,3 @@
-# 概念理解
-简单工厂模式是一个非常简单的模式，它的实质是根据传参的不同创建不同的对象。
-
-
-# 工厂模式
-创建特定的对象，即构造函数
-```js
-funtion person(name, age) {
-    this.name = name || ''
-    this.age = age || ''
-}
-```
-
-# 简单工厂模式
-封装构造函数，根据不同传参选择创造不同的对象
-```js
 function basketball() {
     this.name = '篮球'
 }
@@ -50,6 +34,3 @@ function ball(name) {
             return new Object()         
     }
 }
-```
-
-

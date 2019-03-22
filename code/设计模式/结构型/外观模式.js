@@ -1,11 +1,3 @@
-# 概念
-外观模式: 将一组复杂的子系统封装成一个接口对外提供。
-
-这个模式很简单，通俗来说就是把相似的功能统一封装成一个函数。
-
-# 代码演示
-```js 
-//用外观模式封装 dom添加事件
 function addEvent(dom, eventName, handler, capture) {
     if(!eventName || !handler) {
         return
@@ -19,4 +11,3 @@ function addEvent(dom, eventName, handler, capture) {
         dom[`on${eventName}`] = handler
     }
 }
-```
