@@ -19,4 +19,5 @@
 3. 行为型设计模式      
 [模板方法模式](/designPattern/行为型/模板方法模式.md)        
 [观察者模式](/designPattern/行为型/观察者模式.md)      
-[状态模式](/designPattern/行为型/状态模式.md)
+[状态模式](/designPattern/行为型/状态模式.md)    
+[职责链模式](/designPattern/行为型/职责链模式.md)  
