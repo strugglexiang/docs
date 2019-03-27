@@ -12,7 +12,8 @@
 * * *
 
 2. 结构型设计模式     
-[外观模式](/designPattern/结构型/外观模式.md)
+[外观模式](/designPattern/结构型/外观模式.md)       
+[适配器模式](/designPattern/结构型/适配器模式.md)    
 
 * * *
 
