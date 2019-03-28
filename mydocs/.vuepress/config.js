@@ -17,7 +17,8 @@ module.exports = {
                     { text: '学习Markdown', link: '/markdown/'},
                     { text: 'vue指南', link: '/vue/'},
                     { text: 'Redux的自我实现', link: '/redux/'},
-                    { text: '设计模式', link:'/designPattern/'}
+                    { text: '设计模式', link:'/designPattern/'},
+                    { text: '基础', link:'/basics/'}
                 ]                
             },
             // { text: 'Github', link: 'https://github.com/strugglexiang/docs.git' },
@@ -95,6 +96,17 @@ module.exports = {
                         ['行为型/职责链模式', '职责链模式'],
                     ]
                 },     
+            ],
+            '/basics/': [
+                {
+                    title: 'js基础',
+                    collapsable: false,
+                    children: [
+                       ['js/js树', 'js树'],
+                       ['js/js数据类型', 'js数据类型'],
+                       ['js/如何显得专业', '如何显得专业']         
+                    ]
+                }
             ]
         },
     },
