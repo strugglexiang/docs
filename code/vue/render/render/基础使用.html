@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <title>基础使用</title>
+</head>
+<body>
+    <div id="app">
+        <ele :init_count='count'></ele>
+    </div>
+
+    <script>
+        /*
+            基础用法包含：
+            1. 响应式数据
+            2. props
+            3. 事件
+        */
+    
+        /*
+            踩坑日记:
+            1. 首先分析当前h的是什么元素
+            2. 如果是普通的html元素，则配置对象里面只能配置class、style、attrs、on、domProps等一般特性
+            3. 如果是组件对象，就可以配置多余的特性，如props、scopedSlots(作用域插槽)、slot(自身是其他组件的子组件指定的插槽名)
+        */
+        
+        /*
+            参数使用
+            class 同v-class
+            style 同v-style
+            attrs 普通的HTML特性
+            on    监听事件 普通元素上监听原生dom事件 组件上监听自定义事件(如果需要监听原生事件需加native修饰符)  
+        */
+
+        //------------ 注册全局组件
+        Vue.component('ele', {
+            data() {
+                return {
+                    count: this.init_count,
+                    style: {
+                        backgroundColor: 'red',
+                        color: 'white',
+                    }
+                }
+            },
+            props: {
+                init_count: {
+                    type: Number,
+                    default: 0,
+                },
+            },            
+            methods: {
+                handleClick() {
+                    this.count++ 
+                }
+            },
+            render(h) {
+                return h('button', {
+                    class: {
+                        ele: true,
+                    },
+                    style: [
+                        this.style
+                    ],
+                    attrs: {
+                        id: 'ele',
+                    }, 
+                    props: {
+                        myProp: 'bar'
+                    },                                      
+                    on: {
+                        click: this.handleClick
+                    }
+                }, this.count)
+            }
+        })
+        //------------ 根组件
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                count: 5,
+            }
+        })
+    </script>
+</body>
+</html>

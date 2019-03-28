@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <title>基础使用</title>
+</head>
+<body>
+    <div id="app">
+        <ele :init_count='count'></ele>
+    </div>
+
+    <script>
+        /*
+            基础用法包含：
+            1. 响应式数据
+            2. props
+            3. 事件
+        */
+        //------------ 注册全局组件
+        Vue.component('ele', {
+            template: `
+                <button id='bt' class='bt' @click='handleClick' :style='style'>
+                    <span>{{count}}</span>
+                </button>            
+            `,
+            props: {
+                init_count: {
+                    type: Number,
+                    default: 0,
+                },
+            },
+            data() {
+                return {
+                    count: this.init_count,
+                    style: {
+                        backgroundColor: 'red',
+                        color: 'white',
+                    }
+                }
+            },
+            methods: {
+                handleClick() {
+                    this.count++ 
+                }
+            },
+        })
+        //------------ 根组件
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                count: 1,
+            }
+        })
+    </script>
+</body>
+</html>

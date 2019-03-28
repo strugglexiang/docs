@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <title>需替换的指令</title>
+</head>
+<body>
+    <div id='app'>
+        <ele>
+        </ele>
+    </div>
+    
+    <script>
+        /*
+            需用js的编程能力替换指令
+            v-if
+            v-for
+        */
+        //-------- 注册全局组件
+        Vue.component('ele', {
+            data() {
+                return {
+                    list: [
+                        'you',
+                        'I',
+                        'Bob',
+                        'he'
+                    ]
+                }
+            },
+            template: `
+                <ul class="ele" id='ele'>
+                    <li 
+                        v-for='(item, index) in list'
+                        v-if='item !== "Bob"'
+                    >{{item}}</li>
+                </ul>
+            `,
+        })
+        //-------- 根组件
+        const vm = new Vue({
+            el: '#app',
+        })
+    </script>
+</body>
+</html>
