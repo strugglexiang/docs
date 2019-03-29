@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>向子组件传递作用域插槽</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child>
+            <template #default='scope'>
+                <span>{{scope.msg}}</span>
+            </template>
+        </child>
+    </div>
+
+    <script>
+        /*
+            向子组件传递作用域插槽
+            1. 子组件设有作用域插槽
+            2. 父组件内使用子组件并使用了它的作用域插槽
+        */
+        //--------------
+        Vue.component('child', {
+            data() {
+                return {
+                    msg: 'child text'
+                }
+            },
+            template: `
+                <div class="child">
+                    <h1><slot :msg='msg'>{{msg}}</slot></h1>
+                </div>            
+            `,
+        })
+
+        //-------------- 
+        const vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+        })
+    </script>
+</body>
+</html>

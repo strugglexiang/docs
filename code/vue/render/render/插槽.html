@@ -8,28 +8,31 @@
     <title>插槽</title>
 </head>
 <body>
-    <div id='app'>
-        <ele>
+    <div id="app">
+        <ele >
             测试按钮
             <template #icon>
                 <i>图标</i>
             </template>
         </ele>
     </div>
-    
+
     <script>
-        //-------- 注册全局组件
+        /*
+            插槽的基础使用
+            具名插槽
+        */
+
+        //------------ 注册全局组件
         Vue.component('ele', {
-            template: `
-                <button>
-                    <slot name='icon'></slot>
-                    <span>
-                        <slot>按钮</slot>
-                    </span>
-                </button>            
-            `,
+            render(h) {
+                return h('button', [
+                    this.$slots.icon ? this.$slots.icon : h('i', '测试图标'),
+                    this.$slots.default ? this.$slots.default : '按钮'
+                ])
+            }
         })
-        //-------- 根组件
+        //------------ 根组件
         const vm = new Vue({
             el: '#app',
         })

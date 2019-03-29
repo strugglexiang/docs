@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <title>基础使用</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <ele v-model='msg'></ele>
+    </div>
+
+    <script>
+        /*
+            v-model语法糖
+        */
+
+        //------------ 注册全局组件
+        Vue.component('ele', {
+            props: {
+                value: {
+                    type: String,
+                    default: ''
+                }
+            },
+            watch: {
+                value(news, old) {
+                    this.currentValue = news
+                },
+                currentValue(news, old) {
+                    this.$emit('input', news)
+                }
+            },
+            data() {
+                return {
+                    currentValue: this.value,
+                }
+            },
+            methods: {
+                handle(event) {
+                    this.currentValue = event.target.value
+                }
+            },
+            render(h) {
+                return h('input', 
+                    {
+                        class: 'eleInput',
+                        domProps: {
+                            value: this.currentValue
+                        },
+                        on: {
+                            input: this.handle
+                        }
+                    },
+                )
+            }
+        })
+
+
+
+        //------------ 根组件
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'test'
+            }
+        })
+    </script>
+</body>
+</html>

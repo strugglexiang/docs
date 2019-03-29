@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <title>Vnode唯一性</title>
+</head>
+<body>
+    <div id="app">
+        <ele>
+            <child></child>
+        </ele>
+    </div>
+
+    <script>
+        /*
+            Vnode唯一性
+            节点唯一性        经验证     2.6.0后可以唯一
+            含有组件的slot的唯一性   经验证     2.6.0后可以唯一  
+        */
+
+
+        //------------ 
+        Vue.component('child', {
+            render(h) {
+                return h('div',
+                    {
+                        class: ['child']
+                    },
+                    [
+                        'child text'
+                    ]
+                )
+            }
+        })
+
+        //---------- ele
+        Vue.component('ele', {
+            render(h) {
+                const child = h('child')
+                return h('div',
+                    {
+                        class: ['ele'],
+                    },
+                    [
+                        child,
+                        child,
+                        this.$slots.default,
+                        this.$slots.default,
+                    ]
+                )
+            }
+        })
+
+
+        //------------ 根组件
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                count: 5,
+            }
+        })
+    </script>
+</body>
+</html>

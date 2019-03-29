@@ -5,31 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="../node_modules/vue/dist/vue.js"></script>
-    <title>插槽</title>
+    <title>VNode唯一性</title>
 </head>
 <body>
-    <div id='app'>
+    <div id="app">
         <ele>
-            测试按钮
+            <span>默认</span>
             <template #icon>
-                <i>图标</i>
+                <i>具名</i>
             </template>
         </ele>
     </div>
-    
+
     <script>
-        //-------- 注册全局组件
+        /*
+            Vnode唯一性
+            Vnode在组件树数中是唯一的
+            经测试: 2.6版本后可以插槽连用
+        */
+
+        //------------ 注册全局组件
         Vue.component('ele', {
             template: `
-                <button>
-                    <slot name='icon'></slot>
-                    <span>
-                        <slot>按钮</slot>
-                    </span>
-                </button>            
+                <div class='ele'>
+                    <slot></slot><slot></slot>
+                    <slot name='icon'></slot><slot name='icon'></slot>                 
+                </div>
             `,
         })
-        //-------- 根组件
+        
+        //------------ 根组件
         const vm = new Vue({
             el: '#app',
         })

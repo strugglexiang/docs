@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>向子组件传递作用域插槽</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ele>
+        </ele>
+    </div>
+    <script>
+        /*
+            向子组件传递作用域插槽
+            1. 使用子组件
+            2. 使用子组件的作用域插槽
+        */
+
+        //--------
+        Vue.component('child', {
+            data() {
+                return {
+                    msg: 'child text'
+                }
+            },
+            render(h) {
+                return h('h1', 
+                { class: ['child'] },
+                [
+                    this.$scopedSlots.default({text: this.msg})
+                ])
+            }
+        })
+
+        //--------
+        Vue.component('ele', {
+            render(h) {
+                return h('div', 
+                { class: ['ele'] },
+                [
+                    h('child', {
+                        scopedSlots: {
+                            default(props) {
+                                return h('span', props.text )
+                            }
+                        }
+                    })
+                ])      
+            }
+        })
+
+
+        //-------
+        const vm = new Vue({
+            el: '#app',
+            data: {
+            },
+        })
+    </script>
+</body>
+</html>
