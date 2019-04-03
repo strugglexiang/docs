@@ -18,7 +18,7 @@ module.exports = {
                     { text: 'vue指南', link: '/vue/'},
                     { text: 'Redux的自我实现', link: '/redux/'},
                     { text: '设计模式', link:'/designPattern/'},
-                    { text: 'js基础', link:'/basics/'}
+                    { text: 'Babel', link:'/Babel/'},
                 ]                
             },
             // { text: 'Github', link: 'https://github.com/strugglexiang/docs.git' },
@@ -98,17 +98,9 @@ module.exports = {
                     ]
                 },     
             ],
-            '/basics/': [
-                {
-                    title: 'js基础',
-                    collapsable: false,
-                    children: [
-                       ['js/js树', 'js树'],
-                       ['js/js数据类型', 'js数据类型'],
-                       ['js/如何显得专业', '如何显得专业']         
-                    ]
-                }
-            ]            
+            'Babel': [
+                ''
+            ],           
         },
     },
     markdown: {
