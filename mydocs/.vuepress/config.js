@@ -15,10 +15,11 @@ module.exports = {
                 text: '教程', 
                 items: [
                     { text: '学习Markdown', link: '/markdown/'},
-                    { text: 'vue指南', link: '/vue/'},
+                    { text: 'vue指南', link: '/vue/'},            
                     { text: 'Redux的自我实现', link: '/redux/'},
                     { text: '设计模式', link:'/designPattern/'},
-                    { text: 'Babel', link:'/Babel/'},
+                    { text: 'Babel系列', link:'/Babel/'},
+                    { text: 'webpack', link:'/webpack/'},
                 ]                
             },
             // { text: 'Github', link: 'https://github.com/strugglexiang/docs.git' },
@@ -62,7 +63,7 @@ module.exports = {
             ],
             '/redux/':[
                 ''
-            ],
+            ],                                         
             '/designPattern/':[
                 {
                     title: '设计模式',
@@ -97,10 +98,19 @@ module.exports = {
                         ['行为型/职责链模式', '职责链模式'],
                     ]
                 },     
+            ],  
+            '/Babel/': [
+                {
+                    title: 'Babel系列',
+                    collapsable: false, 
+                    children: [
+                        '',
+                    ],
+                }
             ],
-            'Babel': [
+            '/webpack/': [
                 ''
-            ],           
+            ]              
         },
     },
     markdown: {
