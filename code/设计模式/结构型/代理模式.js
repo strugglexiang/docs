@@ -207,6 +207,7 @@ console.log(result)//5*5*2后颠倒  结果05
  */
 
 //--------- 数组负序号
+/**
 const arrayProxy = (function() {
     return function(array = []) {
         return new Proxy(array, {
@@ -224,7 +225,141 @@ const arrayProxy = (function() {
 const a = arrayProxy([1, 2, 3])
 console.log(a[-1]) //3
 console.log(a[-2]) //2
-console.log(a[-3]) //1
+console.log(a[-3]) //1 
+ */
+
+
+
+//--------------------------------- set
+/**
+ * set: set方法拦截某个属性的赋值操作
+ * 它依次接收4个参数：目标对象、属性、值、Proxy本身(实际上，原始行为所针对的对象)
+ */
+
+//----------- 例: 用作赋值验证
+/**
+const valiProxy = new Proxy({}, {
+    set(target, property, value, receiver) {
+        if(!Number.isInteger(value)) {
+            throw new TypeError('the value is not an Inteter')
+        }
+        target[property] = value
+    }
+})
+valiProxy.a = '123' //Uncaught TypeError: the value is not an Inteter 
+ */
+
+
+//----------- 例: 第4个参数一般指向Proxy本身
+/*
+const proxy = new Proxy({}, {
+    set(target, property, value, receiver) {
+        target[property] = receiver
+    }
+})
+
+proxy.foo = 'a' 
+console.log(proxy === proxy.foo) //true
+ */
+
+//---------- 例: 第四个参数指向操作对象本身
+/**
+const proxy = new Proxy({}, {
+    set(target, property, value, receiver) {
+        target[property] = receiver
+    }
+})
+
+const obj = {}
+
+Object.setPrototypeOf(obj, proxy)
+
+obj.foo = 'a'
+console.log(obj.foo === obj) //true 
+ */
+
+//---------- 例： 严格模式下set必须返回true
+/**
+'use strict'
+const proxy = new Proxy({}, {
+    set(target, propety, value, receiver) {
+        target[propety] = value
+    }
+})
+
+proxy.foo = 'a'//set' on proxy: trap returned falsish for property 'foo' 
+ */
+
+
+
+//--------------------------------- apply
+/**
+ * apply: apply操作拦截函数调用，call、apply操作
+ * 依次接收3个参数：目标对象、目标对象上下文(this)、目标对象的参数数组
+ */
+
+//----------- 例1 函数拦截
+/**
+function func() {
+    console.log('I am func')
+}
+
+const proxyFunc = new Proxy(func, {
+    apply(target, ctx, args) {
+        console.log('I am Proxy')
+    }
+})
+
+func()// I am func
+proxyFunc(1, 2) //I am Proxy 
+*/
+
+
+//---------- 例 apply、call拦截
+/**
+function sum(a, b) {
+    return a + b
+}
+
+const proxySum = new Proxy(sum, {
+    apply(target, ctx, args) {
+        console.log('拦截')
+    }
+})
+
+sum(1, 2) //3 
+proxySum(1, 2)// 拦截
+proxySum.call(null, 1, 2) //拦截
+proxySum.apply(null, [3, 4]) //拦截 
+Reflect.apply(proxySum, null, [3,4])//拦截
+ 
+*/
+
+
+//---------- 例 主动调用
+/**
+function sum(a, b) {
+    return a + b
+}
+
+const proxySum = new Proxy(sum, {
+    apply(target, ctx, args) {
+       return Reflect.apply(...arguments)
+    }
+})
+
+console.log(proxySum(1, 2))//3
+
+console.log(proxySum(3, 4))//7
+ */
+
+
+
+
+
+
+
+
 
 
 
