@@ -354,6 +354,97 @@ console.log(proxySum(3, 4))//7
  */
 
 
+//--------------------------------- has
+/**
+ * has: 拦截‘判断对象是否具有某个实行’，即拦截'HasProperty'操作。
+ * 依次接受2个参数：目标对象、属性名
+ */
+
+//------- 拦截in操作
+/**
+const obj = {
+    _ni: 'hao',
+    wo: 'buhao'
+}
+
+const proxy = new Proxy(obj, {
+    has(target, property) {
+        if(property[0] === '_') {
+            return false
+        }
+        return property in target
+    }
+})
+
+console.log('wo' in proxy) //true
+console.log('_ni' in proxy) // fasle
+console.log('test' in prompt) //false 
+ */
+
+
+
+//------ 无法拦截for...in
+/**
+const a = { name:'a', age: 10}
+const b = { name:'b', age: 20}
+
+const proxy_a = new Proxy(a, {
+    has(target, property) {
+        if(target[property] < 18) {
+            console.log('未成年，无法获取年龄')
+            return false 
+        }
+        return property in target
+    }
+})
+
+const proxy_b = new Proxy(b, {
+    has(target, property) {
+        if(target[property] < 18) {
+            console.log('未成年，无法获取年龄')
+            return false 
+        }
+        return property in target
+    }
+})
+
+// 正常读取
+console.log('name' in proxy_a) // true
+console.log('name' in proxy_b)// 未成年，无法获取年龄  false
+console.log('name' in proxy_b) // true
+console.log('age' in proxy_b) //true
+
+//for...in无法拦截
+for(let key in proxy_a) {
+    console.log(key, proxy_a[key]) 
+}
+// name a 
+// age 10
+
+ */
+
+//----------- 对象禁止扩展，用has拦截属性判断会报错
+/**
+const obj = {
+    ni: 'hao',
+    wo: 'hao'
+}
+
+
+Object.preventExtensions(obj)
+
+const proxy = new Proxy(obj, {
+    has(target, key) {
+        if(key === 'ni') {
+            return false
+        }
+        return key in target
+    }
+})
+
+console.log('wo' in proxy)
+console.log('ni' in proxy) 
+*/
 
 
 
