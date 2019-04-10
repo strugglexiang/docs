@@ -447,6 +447,103 @@ console.log('ni' in proxy)
 */
 
 
+//--------------------------------- construct
+/**
+ * construct: 对new操作的拦截
+ * 依次接收3个参数: 目标对象、new操作符参数数组、proxy对象本身
+ */
+
+//------- 基础使用
+/**
+function p(name) {
+    this.name = name
+}
+
+const proxy = new Proxy(p, {
+    construct(target, args, newTarget) {
+        return new target(...args)
+    }
+})
+
+console.log(new proxy('bob')) // {} 
+ */
+
+//------- construct拦截必须返回对象
+/**
+function p(name) {
+    this.name = name
+}
+const proxy = new Proxy(p, {
+    construct(target, args, newTarget) {
+        return 1
+    }
+})
+
+console.log(new proxy())//Uncaught TypeError: 'construct' on proxy: trap returned non-object ('1')
+ */
+
+
+//--------------------------------- deleteProperty拦截
+/**
+ * deleteProperty 拦截delete操作， 若delete返回false或者抛出错误，则操作不会成功
+ * 依次接收2个参数：目标对象、属性名
+ */
+
+/**
+const obj = {
+    _ni: 'hao',
+    wo: 'hao'
+} 
+
+const proxy = new Proxy(obj, {
+    deleteProperty(target, key) {
+        if(key[0] === '_') {
+            throw new Error('抛错')
+        }
+        delete target[key]
+    }
+})
+
+delete proxy.wo  
+delete proxy._ni //抛错
+ 
+ */
+
+//--------------------------------- defineProperty
+/**
+ * defineProperty 拦截Object.defineProperty操作
+ * 依次接收3个参数：目标对象、属性名、属性描述符
+ */
+
+// Object.defineProperty定义一个对象的新属性、或修改对象的属性
+
+const obj = {
+    ni: 'hao',
+    wo: 'hao'
+}
+
+const proxy = new Proxy(obj, {
+    defineProperty(target, key, descriptor) {
+        console.log('拦截')
+        target[key] = descriptor.value
+    }
+})
+
+proxy.ni = 1//拦截
+proxy.fooo = 2//拦截
+ 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
