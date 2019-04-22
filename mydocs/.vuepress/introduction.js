@@ -11,6 +11,11 @@ const Markdown = [
 ]
 
 
+//------------------------------ front-end-system
+const front_end_system = [
+    '说明',
+]
+
 //------------------------------ Vue
 const Vue = [
     {
@@ -103,10 +108,10 @@ const webpack =  [
 ]
 
 
-
 //--------------------------------- export
 module.exports= {
     Markdown, 
+    front_end_system,
     Vue,
     Redux,
     designPatter,

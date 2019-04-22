@@ -1,5 +1,6 @@
 const {
     Markdown, 
+    front_end_system,
     Vue,
     Redux,
     designPatter,
@@ -10,7 +11,7 @@ const {
 
 
 module.exports = {
-    base: '/dist/',
+    base: '/',
     port: '8082',
     title: "前端技术小册",
     description: "一个优质的前端技术文档集合",
@@ -25,12 +26,13 @@ module.exports = {
             { 
                 text: '教程', 
                 items: [
-                    { text: '学习Markdown', link: '/markdown/'},
+                    { text: '学习Markdown', link: '/markdown/' },
+                    { text: '前端知识体系', link: '/front_end_system/说明' },
                     { text: 'vue指南', link: '/vue/'},            
-                    { text: 'Redux的自我实现', link: '/redux/'},
-                    { text: '设计模式', link:'/designPattern/'},
-                    { text: 'Babel系列', link:'/Babel/'},
-                    { text: 'webpack', link:'/webpack/'},
+                    { text: 'Redux的自我实现', link: '/redux/' },
+                    { text: '设计模式', link:'/designPattern/' },
+                    { text: 'Babel系列', link:'/Babel/' },
+                    { text: 'webpack', link:'/webpack/' },
                 ]                
             },
             { text: 'Github', link: 'https://github.com/strugglexiang/docs.git' },
@@ -38,6 +40,7 @@ module.exports = {
         sidebarDepth: 3,
         sidebar: {
             '/markdown/': Markdown,
+            '/front_end_system/': front_end_system,
             '/vue/': Vue,
             '/redux/': Redux,                                         
             '/designPattern/': designPatter,  
