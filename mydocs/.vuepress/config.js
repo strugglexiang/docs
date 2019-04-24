@@ -40,7 +40,27 @@ module.exports = {
         sidebarDepth: 3,
         sidebar: {
             '/markdown/': Markdown,
-            '/front_end_system/': front_end_system,
+            '/front_end_system/': [
+                '说明',
+                {
+                    title: 'JavaScript',
+                    children: [
+                        ['JavaScript/', '概要'],
+                    ],                    
+                },
+                {
+                    title: 'HTML和CSS',
+                    children: [
+                        ['HTML_and_CSS/', '概要'],
+                    ],                    
+                },
+                {
+                    title: '浏览器实现原理和api',
+                    children: [
+                        ['Browser_and_api/', '概要'],
+                    ],                    
+                },
+            ],
             '/vue/': Vue,
             '/redux/': Redux,                                         
             '/designPattern/': designPatter,  
