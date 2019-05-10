@@ -108,6 +108,13 @@ const webpack =  [
 ]
 
 
+
+//-------------------------------  utils
+const utils = [
+    ''
+]
+
+
 //--------------------------------- export
 module.exports= {
     Markdown, 
@@ -117,4 +124,5 @@ module.exports= {
     designPatter,
     Babel,
     webpack,
+    utils
 }

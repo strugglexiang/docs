@@ -6,6 +6,7 @@ const {
     designPatter,
     Babel,
     webpack,    
+    utils
 } = require('./introduction')
 
 
@@ -33,6 +34,7 @@ module.exports = {
                     { text: '设计模式', link:'/designPattern/' },
                     { text: 'Babel系列', link:'/Babel/' },
                     { text: 'webpack', link:'/webpack/' },
+                    { text: '工具函数', link:'/utils/' },
                 ]                
             },
             { text: 'Github', link: 'https://github.com/strugglexiang/docs.git' },
@@ -65,7 +67,8 @@ module.exports = {
             '/redux/': Redux,                                         
             '/designPattern/': designPatter,  
             '/Babel/': Babel,
-            '/webpack/': webpack              
+            '/webpack/': webpack,
+            '/utils/': utils             
         },
     },
     markdown: {
