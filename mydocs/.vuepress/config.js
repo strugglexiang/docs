@@ -6,7 +6,8 @@ const {
     designPatter,
     Babel,
     webpack,    
-    utils
+    utils,
+    mixtrue
 } = require('./introduction')
 
 
@@ -35,6 +36,7 @@ module.exports = {
                     { text: 'Babel系列', link:'/Babel/' },
                     { text: 'webpack', link:'/webpack/' },
                     { text: '工具函数', link:'/utils/' },
+                    { text: '混杂记录', link: '/mixtrue/'}
                 ]                
             },
             { text: 'Github', link: 'https://github.com/strugglexiang/docs.git' },
@@ -68,7 +70,8 @@ module.exports = {
             '/designPattern/': designPatter,  
             '/Babel/': Babel,
             '/webpack/': webpack,
-            '/utils/': utils             
+            '/utils/': utils,
+            '/mixtrue/': mixtrue       
         },
     },
     markdown: {

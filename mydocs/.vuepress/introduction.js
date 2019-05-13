@@ -115,6 +115,19 @@ const utils = [
 ]
 
 
+
+//------------------------------- 杂谈记录
+const mixtrue = [
+    {
+        title: '混杂记录',
+        collapsable: false, 
+        children: [
+            ['', '目录'],
+            ['classList', 'classList'],
+        ],
+    }
+] 
+
 //--------------------------------- export
 module.exports= {
     Markdown, 
@@ -124,5 +137,6 @@ module.exports= {
     designPatter,
     Babel,
     webpack,
-    utils
+    utils,
+    mixtrue
 }
