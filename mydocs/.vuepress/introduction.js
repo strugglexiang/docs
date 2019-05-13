@@ -124,6 +124,7 @@ const mixtrue = [
         children: [
             ['', '目录'],
             ['classList', 'classList'],
+            ['scrollTop', 'scrollTop'],
         ],
     }
 ] 
